@@ -14,9 +14,9 @@
 
 ## Run locally
 
-    curl -O https://raw.githubusercontent.com/googledatalab/datalab/master/containers/datalab/run-extended.sh
-    chmod +x run-extended.sh
-    ./run-extended.sh
+    docker-composer up # start the container
+    docker-compose exec datalab-nlp bash # enter container
+    gcloud auth login # in container
 
 ## [GCR](https://console.cloud.google.com/gcr)
 
@@ -36,9 +36,13 @@ From GCloud Shell, you should be able to run:
 
     datalab create nlp --image-name gcr.io/$PROJECT_ID/datalab-nlp:latest
 
-Unfortunately, it seems that currently the VM created by `datalab create` 
+Unfortunately, it seems that currently the VM created by `datalab create`
 [can not pull modified images](https://github.com/googledatalab/datalab/issues/1437) from GCR.
 Use public Docker Hub to work arround, e.g.:
 
-    docker-compose push # On local, push to Docker Hub
-    datalab create nlp --image-name vochicong/datalab-nlp:latest # from Gcloud Shell
+    # On local
+    docker tag gcr.io/$PROJECT_ID/datalab-nlp:latest vochicong/datalab-nlp:latest
+    docker push vochicong/datalab-nlp:latest
+
+    # from GCloud Shell
+    datalab create nlp --image-name vochicong/datalab-nlp:latest

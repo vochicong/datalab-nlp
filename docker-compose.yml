@@ -1,7 +1,7 @@
 version: '2'
 services:
   datalab-nlp:
-    image: $IMAGE_NAME
+    image: gcr.io/$PROJECT_ID/datalab-nlp:latest
     build:
       context: .
       dockerfile: Dockerfile-extended.in
