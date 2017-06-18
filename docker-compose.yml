@@ -1,5 +1,17 @@
 version: '2'
 services:
-  datalab:
-    image: datalab
-    build: .
+  datalab-nlp:
+    image: gcr.io/$PROJECT_ID/datalab-nlp:latest
+    build:
+      context: .
+      dockerfile: Dockerfile-extended.in
+    entrypoint: /datalab/run.sh
+    ports:
+      - 8081:8080
+    volumes:
+      - $HOME/datalab:/content/datalab
+      - $HOME/datalab/.ssh:/root/.ssh
+      - $HOME/.gitignore_global:/root/.gitignore_global
+    environment:
+      - PROJECT_ID=$PROJECT_ID
+      - DATALAB_ENV=local
