@@ -10,6 +10,7 @@ services:
       - 8081:8080
     volumes:
       - $HOME/datalab:/content/datalab #required by Datalab container
+      - ./nlp-samples:/content/nlp-samples # Some NLP samples
       - $DATA:/content/data
       - $SSH_CONFIG:/root/.ssh
       - $GITIGNORE_GLOBAL:/root/.gitignore_global
