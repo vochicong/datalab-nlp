@@ -17,4 +17,5 @@ services:
     environment:
       #required by Datalab container
       - PROJECT_ID=$PROJECT_ID
+      - GOOGLE_CLOUD_PROJECT=$PROJECT_ID # for GCloud SDK
       - DATALAB_ENV=local
