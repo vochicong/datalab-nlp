@@ -1,0 +1,14 @@
+## MeCab
+mecab-python3
+
+## gensim
+Cython 
+boto 
+google-compute-engine 
+gensim
+
+## spaCy
+spacy
+
+## Google Cloud Natural Language API
+google-cloud-language
