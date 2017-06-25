@@ -22,6 +22,7 @@
 
 To push the image to GCR:
 
+    docker tag vochicong/datalab-nlp:latest gcr.io/$PROJECT_ID/datalab-nlp:latest
     gcloud docker -- push gcr.io/$PROJECT_ID/datalab-nlp:latest
 
 To pull the image from GCR:
@@ -41,8 +42,11 @@ Unfortunately, it seems that currently the VM created by `datalab create`
 Use public Docker Hub to work arround, e.g.:
 
     # On local
-    docker tag gcr.io/$PROJECT_ID/datalab-nlp:latest vochicong/datalab-nlp:latest
     docker push vochicong/datalab-nlp:latest
 
     # from GCloud Shell
     datalab create nlp --image-name vochicong/datalab-nlp:latest
+
+## Travis CI
+
+Docker image `vochicong/datalab-nlp` is automatically built and pushed by Travis CI.

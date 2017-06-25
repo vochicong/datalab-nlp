@@ -1,0 +1,9 @@
+services:
+  - docker
+
+script:
+  - docker-compose build
+  
+after_script:
+  - docker login -u vochicong -p "$DOCKER_PASSWORD";
+    docker push vochicong/datalab-nlp:latest
