@@ -2,13 +2,16 @@
 mecab-python3
 
 ## gensim
-Cython 
-boto 
-google-compute-engine 
+Cython
+boto
+google-compute-engine
 gensim
 
 ## spaCy
 spacy
 
-## Google Cloud Natural Language API
+## GCloud Natural Language API
 google-cloud-language
+
+## GCloud Storage
+google-cloud-storage

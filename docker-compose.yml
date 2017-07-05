@@ -14,6 +14,7 @@ services:
       - $DATA:/content/data
       - $SSH_CONFIG:/root/.ssh
       - $GITIGNORE_GLOBAL:/root/.gitignore_global
+      - .:/custom
     environment:
       #required by Datalab container
       - PROJECT_ID=$PROJECT_ID
