@@ -1,6 +1,6 @@
 version: '2'
 services:
-  datalab-nlp:
+  app:
     image: vochicong/datalab-nlp:latest
     build:
       context: .
