@@ -1,22 +1,26 @@
 version: '2'
 services:
-  datalab-nlp:
+  app:
     image: vochicong/datalab-nlp:latest
     build:
       context: .
       dockerfile: Dockerfile-extended.in
-    entrypoint: /datalab/run.sh
+    entrypoint:
+      - bash
+      - -c
+      - EXTERNAL_PORT=${EXTERNAL_PORT} /custom/entrypoint.sh
     ports:
-      - 8081:8080
+      - ${EXTERNAL_PORT}:8080
     volumes:
       - $HOME/datalab:/content/datalab #required by Datalab container
-      - ./nlp-samples:/content/nlp-samples # Some NLP samples
+      - ./samples:/content/samples # Some NLP samples
       - $DATA:/content/data
       - $SSH_CONFIG:/root/.ssh
       - $GITIGNORE_GLOBAL:/root/.gitignore_global
-      - .:/custom
+      - ./custom:/custom
     environment:
       #required by Datalab container
       - PROJECT_ID=$PROJECT_ID
       - GOOGLE_CLOUD_PROJECT=$PROJECT_ID # for GCloud SDK
       - DATALAB_ENV=local
+#      - DATALAB_DEBUG=true

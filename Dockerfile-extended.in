@@ -3,10 +3,7 @@ FROM gcr.io/cloud-datalab/datalab:commit-latest-master-build
 
 MAINTAINER Cong Vo <kongvc@gmail.com>
 
-COPY ./custom-packages* /custom/
+COPY ./custom /custom
 RUN cd /custom &&\
-    [ -e custom-packages.sh ] &&\
-    [ -e custom-packages-requirements.txt ] &&\
-    [ -e custom-packages-cleanup.sh ] &&\
-    ./custom-packages.sh &&\
-    ./custom-packages-cleanup.sh
+    ./install.sh &&\
+    ./cleanup.sh

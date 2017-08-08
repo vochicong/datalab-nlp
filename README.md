@@ -15,7 +15,7 @@
 ## Run locally
 
     docker-composer up # start the container
-    docker-compose exec datalab-nlp bash # enter container
+    docker-compose exec app bash # enter container
     gcloud auth login # in container
 
 ## [GCR](https://console.cloud.google.com/gcr)
