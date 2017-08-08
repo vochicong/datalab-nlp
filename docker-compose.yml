@@ -12,9 +12,9 @@ services:
     ports:
       - ${EXTERNAL_PORT}:8080
     volumes:
-      - $HOME/datalab:/content/datalab #required by Datalab container
-      - ./samples:/content/samples # Some NLP samples
-      - $DATA:/content/data
+      - $HOME/datalab:/content/datalab # required by Datalab container
+      - ./samples:/content/datalab/samples # Some NLP samples
+      - $DATA:/content/data # to keep corpus data, indexes, models etc.
       - $SSH_CONFIG:/root/.ssh
       - $GITIGNORE_GLOBAL:/root/.gitignore_global
       - ./custom:/custom

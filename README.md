@@ -7,6 +7,10 @@
 - [gensim](https://github.com/RaRe-Technologies/gensim)
 - [spaCy](https://github.com/explosion/spaCy)
 
+## Environment settings
+
+Copy `.env.sample` to `.env` and edit it to your preference to define environment variables.
+
 ## Build on local
 
     export PROJECT_ID=[GCP project ID]
