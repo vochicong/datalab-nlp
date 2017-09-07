@@ -2,10 +2,10 @@ services:
   - docker
 
 script:
-  - docker-compose build
-  - docker tag vochicong/datalab-nlp:latest vochicong/datalab-nlp:$TRAVIS_COMMIT
+  - docker-compose build &&
+    docker tag vochicong/datalab-nlp:latest vochicong/datalab-nlp:$TRAVIS_COMMIT
   
 after_script:
-  - docker login -u vochicong -p "$DOCKER_PASSWORD";
-    docker push vochicong/datalab-nlp:latest
+  - docker login -u vochicong -p "$DOCKER_PASSWORD" &&
+    docker push vochicong/datalab-nlp:latest &&
     docker push vochicong/datalab-nlp:$TRAVIS_COMMIT
