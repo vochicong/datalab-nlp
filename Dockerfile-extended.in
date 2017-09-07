@@ -1,9 +1,13 @@
 # FROM gcr.io/cloud-datalab/datalab:latest
 FROM gcr.io/cloud-datalab/datalab:commit-latest-master-build
 
-MAINTAINER Cong Vo <kongvc@gmail.com>
+WORKDIR /custom
 
-COPY ./custom /custom
-RUN cd /custom &&\
-    ./install.sh &&\
-    ./cleanup.sh
+COPY ./custom/install.sh ./
+COPY ./custom/requirements.txt ./
+RUN ./install.sh
+
+COPY ./custom/install-snorkel.sh ./
+RUN ./install-snorkel.sh
+
+COPY ./custom/entrypoint.sh ./
