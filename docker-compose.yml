@@ -5,10 +5,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-extended.in
-    entrypoint:
-      - bash
-      - -c
-      - EXTERNAL_PORT=${EXTERNAL_PORT} /custom/entrypoint.sh
     ports:
       - ${EXTERNAL_PORT}:8080
     volumes:
@@ -17,10 +13,17 @@ services:
       - $DATA:/content/data # to keep corpus data, indexes, models etc.
       - $SSH_CONFIG:/root/.ssh
       - $GITIGNORE_GLOBAL:/root/.gitignore_global
-      - ./custom:/custom
     environment:
       #required by Datalab container
       - PROJECT_ID=$PROJECT_ID
       - GOOGLE_CLOUD_PROJECT=$PROJECT_ID # for GCloud SDK
       - DATALAB_ENV=local
 #      - DATALAB_DEBUG=true
+  custom:
+    extends: app
+    entrypoint:
+      - bash
+      - -c
+      - EXTERNAL_PORT=${EXTERNAL_PORT} /custom/entrypoint.sh
+    volumes:
+      - ./custom:/custom
