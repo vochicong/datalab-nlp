@@ -19,7 +19,7 @@ Copy `.env.sample` to `.env` and edit it to your preference to define environmen
 
 ## Run locally
 
-    docker-composer up # start the container
+    docker-composer up app # start the container
     docker-compose exec app bash # enter container
     gcloud auth login # in container
 
