@@ -6,7 +6,7 @@
 - [MeCab](https://github.com/taku910/mecab)
 - [gensim](https://github.com/RaRe-Technologies/gensim)
 - [spaCy](https://github.com/explosion/spaCy)
-- [Snorkel](https://github.com/HazyResearch/snorkel)
+- [Snorkel](https://github.com/HazyResearch/snorkel) (installed at `/snorkel`)
 
 ## Environment settings
 

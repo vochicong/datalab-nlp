@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -ex
-cd `dirname $0`
+cd /
 
 git clone --branch docker --depth 1 https://github.com/vochicong/snorkel.git
 cd snorkel
