@@ -19,11 +19,10 @@ services:
       - GOOGLE_CLOUD_PROJECT=$PROJECT_ID # for GCloud SDK
       - DATALAB_ENV=local
 #      - DATALAB_DEBUG=true
+      - EXTERNAL_PORT=$EXTERNAL_PORT
   custom:
     extends: app
     entrypoint:
-      - bash
-      - -c
-      - EXTERNAL_PORT=${EXTERNAL_PORT} /custom/entrypoint.sh
+      - /custom/entrypoint.sh
     volumes:
       - ./custom:/custom
