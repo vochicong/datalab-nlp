@@ -1,28 +1,38 @@
 version: '2'
 services:
-  app:
-    image: vochicong/datalab-nlp:latest
+  base:
+    image: $IMAGE_NAME:$IMAGE_TAG
     build:
       context: .
-      dockerfile: Dockerfile-extended.in
-    ports:
-      - ${EXTERNAL_PORT}:8080
     volumes:
-      - $HOME/datalab:/content/datalab # required by Datalab container
-      - ./samples:/content/datalab/samples # Some NLP samples
+      - $DATALAB:/content/datalab # required, to keep notebooks, docs etc.
       - $DATA:/content/data # to keep corpus data, indexes, models etc.
       - $SSH_CONFIG:/root/.ssh
       - $GITIGNORE_GLOBAL:/root/.gitignore_global
+      - .:/content/datalab-nlp
+      - ./custom:/custom
     environment:
       #required by Datalab container
       - PROJECT_ID=$PROJECT_ID
       - GOOGLE_CLOUD_PROJECT=$PROJECT_ID # for GCloud SDK
       - DATALAB_ENV=local
-#      - DATALAB_DEBUG=true
       - EXTERNAL_PORT=$EXTERNAL_PORT
-  custom:
-    extends: app
+      #- DATALAB_DEBUG=true
     entrypoint:
       - /custom/entrypoint.sh
-    volumes:
-      - ./custom:/custom
+  app:
+    extends: base
+    ports:
+      - $EXTERNAL_PORT:8080
+  snorkel:
+    extends: base
+    working_dir: /snorkel
+    entrypoint:
+      - /snorkel/docker/entry.sh
+    ports:
+      - 8888:8888
+  snorkel-test:
+    extends: base
+    working_dir: /snorkel
+    entrypoint:
+      - /snorkel/docker/test.sh

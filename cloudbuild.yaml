@@ -1,4 +1,5 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-f', 'Dockerfile-extended.in', '-t', 'gcr.io/$PROJECT_ID/datalab-nlp:$REVISION_ID', '-t', 'gcr.io/$PROJECT_ID/datalab-nlp:latest', '.']
+  args: ['build', '-f', 'Dockerfile', '-t', 'gcr.io/$PROJECT_ID/datalab-nlp:$REVISION_ID', '-t', 'gcr.io/$PROJECT_ID/datalab-nlp:latest', '.']
 images: ['gcr.io/$PROJECT_ID/datalab-nlp:$REVISION_ID', 'gcr.io/$PROJECT_ID/datalab-nlp:latest']
+timeout: '3600s'
