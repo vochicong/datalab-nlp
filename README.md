@@ -7,19 +7,26 @@
     docker-compose pull app
     docker-compose up app
 
-To use Snorkel:
+To use Snorkel, spaCy and Janome:
 
     docker-compose up snorkel
 
 ## Packages included
 
+Service `app` includes:
+- Python 3
 - [Google Cloud Datalab](https://github.com/googledatalab/datalab)
   with [many libraries](https://cloud.google.com/datalab/docs/concepts/key-concepts#included_libraries),
   e.g. Jupyter, NLTK, NumPy, pandas, scikit-learn, SciPy etc.
 - [MeCab](https://github.com/taku910/mecab)
 - [gensim](https://github.com/RaRe-Technologies/gensim)
 - [spaCy](https://github.com/explosion/spaCy)
-- [Snorkel](https://github.com/HazyResearch/snorkel) (installed at `/content/snorkel`)
+
+Service `snorkel` includes:
+- Python 2
+- [Snorkel](https://github.com/HazyResearch/snorkel) (in `/snorkel/`)
+- [spaCy](https://github.com/explosion/spaCy) (in `/root/miniconda/envs/py2snorkel/`)
+- [Janome](https://github.com/mocobeta/janome)
 
 ## Environment settings
 
