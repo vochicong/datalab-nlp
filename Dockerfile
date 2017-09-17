@@ -10,4 +10,7 @@ RUN ./install.sh
 COPY ./custom/install-snorkel.sh ./
 RUN ./install-snorkel.sh
 
+COPY ./custom/install-janome.sh ./
+RUN ./install-janome.sh
+
 COPY ./custom/entrypoint.sh ./
