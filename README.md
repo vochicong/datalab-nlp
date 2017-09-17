@@ -7,10 +7,14 @@
     docker-compose pull app
     docker-compose up app
 
+To use Snorkel:
+
+    docker-compose up snorkel
+
 ## Packages included
 
-- [Google Cloud Datalab](https://github.com/googledatalab/datalab) 
-  with [many libraries](https://cloud.google.com/datalab/docs/concepts/key-concepts#included_libraries), 
+- [Google Cloud Datalab](https://github.com/googledatalab/datalab)
+  with [many libraries](https://cloud.google.com/datalab/docs/concepts/key-concepts#included_libraries),
   e.g. Jupyter, NLTK, NumPy, pandas, scikit-learn, SciPy etc.
 - [MeCab](https://github.com/taku910/mecab)
 - [gensim](https://github.com/RaRe-Technologies/gensim)
@@ -24,11 +28,11 @@ Copy `.env.sample` to `.env` and edit it to define environment variables for Doc
     cp .env.sample .env
     set -a; source .env; set +a
 
-## Build 
+## Build
 
     docker-compose build
 
-You can set up Docker Hub and 
+You can set up Docker Hub and
 [GCR](https://console.cloud.google.com/gcr)
 to build the image directly from your GitHub repository.
 
