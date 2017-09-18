@@ -24,15 +24,24 @@ services:
     extends: base
     ports:
       - $EXTERNAL_PORT:8080
+  dev:
+    extends: app
+    image: gcr.io/cloud-datalab/datalab:commit-latest-master-build
+  snorkel-base:
+    extends: base
+    image: $IMAGE_NAME:snorkel
+    build:
+      context: .
+      dockerfile: Dockerfile-snorkel
   snorkel:
-    extends: base
-    working_dir: /snorkel
-    entrypoint:
-      - /snorkel/docker/entry.sh
+    extends: snorkel-base
     ports:
-      - 8888:8888
+      - $EXTERNAL_PORT:8080
+      # - 8888:8888
+    entrypoint:
+      - /custom/snorkel/entrypoint-snorkel.sh
+      # - /snorkel/docker/entry.sh
   snorkel-test:
-    extends: base
-    working_dir: /snorkel
+    extends: snorkel-base
     entrypoint:
       - /snorkel/docker/test.sh

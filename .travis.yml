@@ -5,13 +5,10 @@ env:
   - IMAGE_NAME=vochicong/datalab-nlp
 
 script:
-  - docker build -t $IMAGE_NAME:latest
-                 -t $IMAGE_NAME:$TRAVIS_BRANCH
-                 -t $IMAGE_NAME:$TRAVIS_COMMIT
-                 .
+  - docker build -t $IMAGE_NAME:latest .
+  - docker build -t $IMAGE_NAME:snorkel -f Dockerfile-snorkel .
 
 after_script:
   - docker login -u vochicong -p "$DOCKER_PASSWORD" &&
     docker push $IMAGE_NAME:latest &&
-    docker push $IMAGE_NAME:$TRAVIS_BRANCH &&
-    docker push $IMAGE_NAME:$TRAVIS_COMMIT
+    docker push $IMAGE_NAME:snorkel
