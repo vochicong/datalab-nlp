@@ -1,5 +1,6 @@
-## MeCab
+## Japanese
 mecab-python3
+janome
 
 ## gensim
 Cython
@@ -18,3 +19,6 @@ google-cloud-storage
 
 ## Web server
 falcon
+
+## Testing
+pytest

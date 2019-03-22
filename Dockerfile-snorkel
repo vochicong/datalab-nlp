@@ -1,0 +1,12 @@
+# FROM gcr.io/cloud-datalab/datalab:latest
+FROM gcr.io/cloud-datalab/datalab:commit-latest-master-build
+
+WORKDIR /custom/snorkel
+
+COPY ./custom/snorkel .
+COPY ./custom/install-janome.sh /custom
+RUN ./install-snorkel.sh
+
+WORKDIR /snorkel
+COPY ./custom/snorkel/entrypoint-snorkel.sh ./
+ENTRYPOINT /custom/snorkel/entrypoint-snorkel.sh
